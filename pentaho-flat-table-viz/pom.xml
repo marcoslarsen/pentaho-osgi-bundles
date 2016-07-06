@@ -18,6 +18,7 @@
   <url>http://www.pentaho.com</url>
 
   <properties>
+    <pentaho-requirejs-manager.version>${project.version}</pentaho-requirejs-manager.version>
     <common-ui.revision>${project.version}</common-ui.revision>
 
     <requirejs.version>2.2.0</requirejs.version>

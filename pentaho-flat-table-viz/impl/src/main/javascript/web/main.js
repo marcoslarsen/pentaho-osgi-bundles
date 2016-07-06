@@ -2,7 +2,7 @@ define(
   [
     "pentaho/type/Context",
     "pentaho/data/Table",
-    "pentaho-flat-table-viz-impl/flat-table-viz-no-style/model",
+    "pentaho-flat-table-viz-impl/flat-table-viz/model",
     "pentaho/type/configurationService"
   ], function(Context, Table, myModelFactory, configurationService) {
     "use strict";
