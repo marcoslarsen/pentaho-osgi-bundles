@@ -38,10 +38,8 @@ define([
     it("can be instantiated with a well-formed spec", function() {
       expect(function() {
         return new Model({
-          width: 1,
-          height: 1,
-          isInteractive: false,
-          data: {v: {}}
+          width:    1,
+          height:   1
         });
       }).not.toThrowError();
     });

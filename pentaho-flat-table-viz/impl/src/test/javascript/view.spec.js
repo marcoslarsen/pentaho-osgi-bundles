@@ -15,21 +15,33 @@
 */
 define([
   "pentaho/type/Context",
+  "pentaho/data/Table",
   "pentaho/visual/base/View",
   "flat-table-viz/view",
   "flat-table-viz/model"
-], function(Context, BaseView, VizView, VizModel) {
-
+], function(Context, Table, BaseView, VizView, VizModel) {
   "use strict";
 
   describe("VizView", function() {
 
     var context = new Context();
     var Model = context.get(VizModel);
+
+    var tableSpec = {
+      model: [
+        {name: "foo", type: "string", label: "Foo"}
+      ],
+      rows: [
+        {c: [{v: "Col_1"}]},
+        {c: [{v: "Col_2"}]}
+      ]
+    };
+
     var model = new Model({
-      width:    1,
-      height:   1,
-      data:     {v: {}}
+      width:    100,
+      height:   100,
+      columns: {attributes: [{name: "foo"}]},
+      data:     new Table(tableSpec)
     });
 
     it("should be a function", function() {
