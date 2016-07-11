@@ -39,6 +39,7 @@
   },
 
   "paths": {
-    "flat-table-viz": "../../${project.artifactId}/${project.version}/flat-table-viz"
+    "flat-table-viz": "/${project.artifactId}/${project.version}/flat-table-viz",
+    "flat-table-module-id": "/${project.artifactId}_${project.version}/flat-table-viz"
   }
 }

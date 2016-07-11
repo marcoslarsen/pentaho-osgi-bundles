@@ -14,20 +14,24 @@
  * limitations under the License.
  */
 define([
+  "require",
   "pentaho/visual/base/model",
   "flat-table-viz/view"
-], function(baseModelFactory, View) {
-
+], function(req, baseModelFactory, view) {
   "use strict";
 
+  var moduleId = req.toUrl('flat-table-module-id').substring(1);
+  console.log("Module ID -", moduleId);
+
   return function(context) {
-    
+
     var BaseModel = context.get(baseModelFactory);
     return BaseModel.extend({
       type: {
-        id: "pentaho-flat-table-viz-impl_7.0-SNAPSHOT/flat-table-viz",
-        view: View,
-        label: 'Flat Table',        
+        //id: "pentaho-flat-table-viz-impl_7.0-SNAPSHOT/flat-table-viz", //det-poc
+        id: moduleId,
+        view: view,
+        label: 'Flat Table',
         isBrowsable: true,
         isAbstract: false,
         props: [
@@ -55,6 +59,12 @@ define([
             name: "scrollY",
             type: "number",
             value: 400
+          },
+          {
+            header: 'Columns',
+            description: 'Drag and drop here the fields that you want to see in the table.',
+            name: "columns",
+            type: "pentaho/visual/role/ordinal"
           }
         ]
       }

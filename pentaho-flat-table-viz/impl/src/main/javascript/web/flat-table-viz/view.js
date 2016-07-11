@@ -37,6 +37,7 @@ define([
       this.base();
 
       this.tElement = $('<table class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">');
+
       $(this._element).empty();
       $(this._element).append(this.tElement);
     },
@@ -44,14 +45,19 @@ define([
     /** @override */
     _render: function() {
 
-      this.tElement.empty();
+      var cols = this.model.getv("columns");
+      var fCols = filterCols(cols._values.attributes._elems);
 
-      var tData = parse(this.model.getv("data"));
+      var data = this.model.getv("data");
+      var tData = parseTableData(data, fCols);
 
       var iScroll = this.model.getv("scroller");
       var fHeader = this.model.getv("fixedHeader");
 
-      if(this.dTable) this.dTable.destroy();
+      if(this.dTable)this.dTable.destroy();
+      this.tElement.empty();
+
+      if(!tData.columns.length) return;
       this.dTable = this.tElement.DataTable({
 
         data:             tData.data,
@@ -72,7 +78,9 @@ define([
         scroller:         this.model.getv("scroller"),
         scrollY:          this.model.getv("scrollY")
       });
-      this.dTable.columns.adjust();
+
+      this.dTable.colReorder.order( tData.order );
+      this._resize();
     },
 
     /** @override */
@@ -82,7 +90,7 @@ define([
       var h = this.model.getv("height");
 
       $(this._element).css({ width: w, height: h });
-      this.dTable.columns.adjust();
+      this.dTable.columns.adjust().draw(false);
     },
 
     /** @override */
@@ -91,24 +99,39 @@ define([
     }
   });
 
-  function parse(data) {
+  function filterCols(cols) {
 
-    var tData = { data: [], columns: [] };
+    var filteredCols = [];
+
+    _.each(cols, function(col, c){
+      filteredCols.push(col._values.name._value);
+    });
+
+    return filteredCols;
+  }
+
+  function parseTableData(data, filteredCols) {
+
+    var tData = { data: [], columns: [], order: [] };
+
+    _.each(filteredCols, function(col){
+      _.each(data.model.attributes, function(attr, a){
+        if(attr.name == col) tData.order.push(a);
+      });
+    });
 
     _.each(data.model.attributes, function(attr, a){
-      tData.columns.push({title: attr.name});
+      var cTitle = attr.name;
+      var cVisible = !filteredCols.length || filteredCols.indexOf(cTitle) !== -1 ? true : false;
+      tData.columns.push({title: cTitle, visible: cVisible});
+      if(tData.order.indexOf(a) == -1) tData.order.push(a);
     });
 
     _.each(data.implem.rows, function(row, r){
-
-        var rData = [];
-        _.each(row.c, function(cData, c){
-            rData.push(cData.v);
-        });
-
-        tData.data.push(rData);
+      var rData = _.map(row.c, function(cData, c){ return cData.v; });
+      tData.data.push(rData);
     });
 
     return tData;
   }
-});
+  });
