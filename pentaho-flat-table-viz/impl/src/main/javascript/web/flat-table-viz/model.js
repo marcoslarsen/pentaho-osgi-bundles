@@ -28,7 +28,6 @@ define([
     var BaseModel = context.get(baseModelFactory);
     return BaseModel.extend({
       type: {
-        //id: "pentaho-flat-table-viz-impl_7.0-SNAPSHOT/flat-table-viz", //det-poc
         id: moduleId,
         view: view,
         label: 'Flat Table',
