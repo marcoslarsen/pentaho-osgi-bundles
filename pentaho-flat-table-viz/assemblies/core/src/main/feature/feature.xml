@@ -13,9 +13,9 @@
     <bundle dependency="false">pentaho-webjars:mvn:org.webjars.bower/requirejs-text/${requirejs-text.version}</bundle>
 
     <bundle dependency="false">pentaho-webjars:mvn:org.webjars/jquery/${jquery.version}</bundle>
-    <bundle dependency="false">pentaho-webjars:mvn:org.webjars.bower/bootstrap/${bootstrap.version}</bundle>
+    <bundle dependency="false">pentaho-webjars:mvn:org.webjars/bootstrap/${bootstrap.version}</bundle>
 
-    <bundle dependency="false">pentaho-webjars:mvn:org.webjars.npm/underscore/${underscore.version}</bundle>
+    <bundle dependency="false">pentaho-webjars:mvn:org.webjars/underscorejs/${underscore.version}</bundle>
 
     <bundle dependency="false">pentaho-webjars:mvn:org.webjars.bower/datatables.net/${datatables.net.version}</bundle>
     <bundle dependency="false">pentaho-webjars:mvn:org.webjars.bower/datatables.net-bs/${datatables.net-bs.version}</bundle>

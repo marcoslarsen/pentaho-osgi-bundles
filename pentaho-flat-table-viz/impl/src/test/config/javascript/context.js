@@ -15,7 +15,7 @@ requirejs.config({
     "pentaho/i18n": src + "/lib/i18nMock",
     "flat-table-viz": src + "/flat-table-viz",
 
-    "underscore": depWebJars + "/underscore/${underscore.version}/underscore",
+    "underscorejs": depWebJars + "/underscorejs/${underscore.version}/underscore",
     "jquery": depWebJars + "/jquery/${jquery.version}/jquery",
     "bootstrap-css": depWebJars + "/bootstrap-css/${bootstrap.version}/css/bootstrap",
 
