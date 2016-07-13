@@ -16,7 +16,7 @@
 define([
   "./view_def",
   "datatables.net-bs",
-  "css!bootstrap/dist/css/bootstrap.css",
+  "css!bootstrap-css.css",
   "css!datatables.net-bs/css/dataTables.bootstrap.css",
   "css!datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css",
   "css!datatables.net-colreorder-bs/css/colReorder.bootstrap.css",

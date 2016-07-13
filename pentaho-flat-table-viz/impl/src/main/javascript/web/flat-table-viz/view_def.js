@@ -15,7 +15,7 @@
  */
 define([
   "pentaho/visual/base/View",
-  "underscore",
+  "underscorejs",
   "jquery",
   "datatables.net",
   "datatables.net-fixedheader",

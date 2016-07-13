@@ -24,9 +24,9 @@
     "require-css": "${require-css.version}",
     "requirejs-text": "${requirejs-text.version}",
 
-    "underscore": "${underscore.version}",
+    "underscorejs": "${underscore.version}",
     "jquery": "${jquery.version}",
-    "bootstrap": "${bootstrap.version}",
+    "bootstrap-css": "${bootstrap.version}",
 
     "datatables.net": "${datatables.net.version}",
     "datatables.net-bs": "${datatables.net-bs.version}",
